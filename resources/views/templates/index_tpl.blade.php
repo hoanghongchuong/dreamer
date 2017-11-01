@@ -6,9 +6,6 @@ $setting = Cache::get('setting');
 $cateProducts = Cache::get('cateProducts');
 
 ?>
-<div>
-    <input type="text" name="">
-</div>
 <h1 class="hidden">Dreamer - </h1>
 <section class="main_container">
 
