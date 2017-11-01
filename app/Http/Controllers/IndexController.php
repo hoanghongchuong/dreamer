@@ -116,7 +116,7 @@ class IndexController extends Controller {
 	public function getProduct(Request $req)
 	{
 		$cate_pro = DB::table('product_categories')->where('status',1)->where('parent_id',0)->orderby('id','asc')->get();
-		$products = DB::table('products')->select()->where('status',1)->get();
+		$products = DB::table('products')->select()->where('status',1)->paginate(18);
 		// $appends = [];
 		// $selected = $req->sort;
 		// if ($req->sort) {
@@ -133,9 +133,9 @@ class IndexController extends Controller {
 		$setting = Cache::get('setting');
 		$com='san-pham';
 		
-		$title = "Sản phẩm";
-		$keyword = "Sản phẩm";
-		$description = "Sản phẩm";
+		$title = "Lĩnh vực";
+		$keyword = "Lĩnh vực";
+		$description = "Lĩnh vực";
 		// $img_share = asset('upload/hinhanh/'.$banner_danhmuc->photo);
 		
 		// return view('templates.product_tpl', compact('product','banner_danhmuc','doitac','camnhan_khachhang','keyword','description','title','img_share'));
@@ -180,7 +180,6 @@ class IndexController extends Controller {
 	
 	public function getProductDetail($id)
 	{
-        
         $cate_pro = DB::table('product_categories')->where('status',1)->orderby('id','desc')->get();
 		$product_detail = DB::table('products')->select()->where('status',1)->where('alias',$id)->get()->first();
 		if(!empty($product_detail)){
@@ -236,6 +235,11 @@ class IndexController extends Controller {
 
 		return view('templates.about_tpl', compact('about','slider_about','banner_danhmuc','keyword','description','title','img_share','com'));
 	}
+	public function getPhatTrien(){
+		$com = 'phat-trien';
+		$pt = DB::table('news')->where('com',$com)->first();
+		return view('templates.phattrien', compact('pt'));
+	}
 	public function search(Request $request)
 	{
 		$search = $request->txtSearch;
@@ -246,9 +250,7 @@ class IndexController extends Controller {
 		$description = "Tìm kiếm: ".$search;
 		$img_share = '';
 		// End cấu hình SEO
-		
-		$products = DB::table('products')->select()->where('name', 'LIKE', '%' . $search . '%')->orderBy('id','DESC')->get();
-		// dd($product);
+		$products = DB::table('products')->select()->where('name', 'LIKE', '%' . $search . '%')->orderBy('id','DESC')->paginate(18);
 		return view('templates.search_tpl', compact('products','banner_danhmuc','keyword','description','title','img_share','search','cate_pro'));
 	}
 

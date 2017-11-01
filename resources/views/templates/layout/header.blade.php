@@ -12,7 +12,7 @@
                 <?php $partners = DB::table('partner')->where('status',1)->get(); ?>
                 @foreach($partners as $partner)
                     <div class="col-xs-12">
-                        <a href="{{$partner->link}}">
+                        <a href="{{$partner->url}}">
                             <img src="{{asset('upload/banner/'.$partner->photo)}}" alt="brand">
                         </a>
                     </div>
@@ -25,7 +25,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-12">
-                    <h2>Chào mừng bạn đến với Dreamer!</h2>
+                    <?php $slogans = DB::table('slogan')->where('id',3)->first(); ?>
+                    <h2>{!!$slogans->content!!}</h2>
                 </div>
             </div>
         </div>
@@ -59,11 +60,10 @@
                                             <a class="menu_mobile_list_submenu_link" href="{{url('linh-vuc/'.$cate->alias.'.html')}}">{{$cate->name}}</a>
                                         </li>
                                         @endforeach
-                                       
                                     </ul>
                                 </li>
 
-                                <li class="level0 "><a href="phat-trien.html">Phát triển bền vững</a></li>
+                                <li class="level0 "><a href="{{url('phat-trien.html')}}">Phát triển bền vững</a></li>
 
                                 <li class="{{url('tin-tuc')}}"><a href="tin-tuc.html">Tin tức sự kiện</a></li>
 
@@ -89,21 +89,18 @@
                             <ul id="nav">
                                 <li class="nav-item "><a class="nav-link" href="{{url('gioi-thieu')}}">Giới thiệu</a></li>
                                 <li class="nav-item level0 ">
-                                    <a href="linh-vuc-hoat-dong.html" class="nav-link">Lĩnh vực hoạt động</a>
+                                    <a href="{{url('linh-vuc-hoat-dong')}}" class="nav-link">Lĩnh vực hoạt động</a>
                                     <ul class="menu_main_list_sub_menu">
                                         @foreach($cateProducts as $cate)
                                         <li class="nav-item-lv2s">
                                             <a class="nav-link" href="{{url('linh-vuc/'.$cate->alias)}}">{{$cate->name}}</a>
                                         </li>
                                         @endforeach
-                                        
                                     </ul>
-
                                 </li>
 
-                                <li class="nav-item "><a class="nav-link" href="phat-trien.html">Phát triển bền
+                                <li class="nav-item "><a class="nav-link" href="{{url('phat-trien.html')}}">Phát triển bền
                                     vững</a></li>
-
                                 <li class="nav-item "><a class="nav-link" href="{{asset('tin-tuc')}}">Tin tức sự kiện</a></li>
 
                                 <li class="nav-item "><a class="nav-link" href="{{asset('lien-he')}}">Liên hệ</a></li>
@@ -115,8 +112,8 @@
                     <!-- Search -->
                     <div class="searchboxlager">
                         <div class="searchfromtop">
-                            <form action="" method="get" autocomplete="off">
-                                <input type="text" class="form-control" maxlength="70" name="query" id="search"
+                            <form action="{{route('search')}}" method="get" autocomplete="off">
+                                <input type="text" class="form-control" maxlength="70" name="txtSearch" id="search"
                                        placeholder="Nhập từ khóa tìm kiếm và ấn enter">
                             </form>
                             <a class="hidesearchfromtop"><i class="fa fa-times"></i></a>

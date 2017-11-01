@@ -3,6 +3,7 @@
 <?php
     $setting = Cache::get('setting');
     $about = Cache::get('about');
+    $cateProducts = Cache::get('cateProducts');
 ?>
 <section class="bread-crumb">
     <div class="container">
@@ -73,84 +74,34 @@
                 <div class="aside-content">
                     <nav class="nav-category navbar-toggleable-md" >
                         <ul class="nav navbar-pills">
-
                             <li class="nav-item">
                                 <i class="fa fa-caret-right"></i>
-                                <a class="nav-link" href="{{url('gioi-thieu')}}">Giới thiệu</a></li>
-
+                                <a class="nav-link" href="{{url('gioi-thieu')}}">Giới thiệu</a>
+                            </li>
                             <li class="nav-item">
                                 <i class="fa fa-caret-right"></i>
                                 <a href="" class="nav-link">Lĩnh vực hoạt động</a>
                                 <i class="fa fa-angle-down a" ></i>
                                 <ul class="dropdown-menu">
-
+                                    @foreach($cateProducts as $cate)    
                                     <li class="nav-item">
                                         <i class="fa fa-caret-right"></i>
-                                        <a class="nav-link" href="">Bất động sản</a>
+                                        <a class="nav-link" href="{{url('linh-vuc/'.$cate->alias)}}">{{$cate->name}}</a>
                                     </li>
-
-
-                                    <li class="nav-item">
-                                        <i class="fa fa-caret-right"></i>
-                                        <a class="nav-link" href="">Du lịch</a>
-                                    </li>
-
-
-                                    <li class="nav-item">
-                                        <i class="fa fa-caret-right"></i>
-                                        <a class="nav-link" href="">Vui chơi - Giải trí</a>
-                                    </li>
-
-
-                                    <li class="nav-item">
-                                        <i class="fa fa-caret-right"></i>
-                                        <a class="nav-link" href="">Y tế</a>
-                                    </li>
-
-
-                                    <li class="nav-item">
-                                        <i class="fa fa-caret-right"></i>
-                                        <a class="nav-link" href="">Giáo dục</a>
-                                    </li>
-
-
-                                    <li class="nav-item">
-                                        <i class="fa fa-caret-right"></i>
-                                        <a class="nav-link" href="">Thương mại điện tử</a>
-                                    </li>
-
-
-
-                                    <li class="nav-item">
-                                        <i class="fa fa-caret-right"></i>
-                                        <a class="nav-link" href="">Trung tâm thương mại</a>
-                                    </li>
-
-
-                                    <li class="nav-item">
-                                        <i class="fa fa-caret-right"></i>
-                                        <a class="nav-link" href="">Kinh doanh bán lẻ</a>
-                                    </li>
+                                    @endforeach
                                 </ul>
                             </li>
-
-
                             <li class="nav-item">
                                 <i class="fa fa-caret-right"></i>
                                 <a class="nav-link" href="">Phát triển bền vững</a></li>
-
-
-
                             <li class="nav-item">
                                 <i class="fa fa-caret-right"></i>
-                                <a class="nav-link" href="{{url('tin-tuc')}}">Tin tức sự kiện</a></li>
-
-
-
+                                <a class="nav-link" href="{{url('tin-tuc')}}">Tin tức sự kiện</a>
+                            </li>
                             <li class="nav-item">
                                 <i class="fa fa-caret-right"></i>
-                                <a class="nav-link" href="{{url('lien-he')}}">Liên hệ</a></li>
-
+                                <a class="nav-link" href="{{url('lien-he')}}">Liên hệ</a>
+                            </li>
                         </ul>
                     </nav>
                 </div>

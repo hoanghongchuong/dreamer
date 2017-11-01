@@ -90,6 +90,7 @@
           </ul>
         </li> -->
         <li><a href="backend/news?type=tin-tuc"><i class="fa fa-circle-o"></i> <span>Quản lý tin tức</span></a></li>
+        <li><a href="backend/news?type=phat-trien"><i class="fa fa-circle-o"></i> <span>Phát triển bền vững</span></a></li>
         <!-- <li class="treeview">
           <a href="#">
             <i class="fa fa-edit"></i> <span>Quản lý tin tức</span>
@@ -193,7 +194,7 @@
         </li> -->
         <!-- <li><a href="backend/bankaccount"><i class="fa fa-envelope"></i><span>Quản lý tài khoản ngân hàng</span></a></li> -->
         <!-- <li><a href="{{ asset('backend/menu?type=menu-top') }}"><i class="fa fa-circle-o"></i> <span>Quản lý menu</span></a></li> -->
-        <!-- <li><a href="backend/position"><i class="fa fa-gear" aria-hidden="true"></i> <span>Vị trí quảng cáo</span></a></li> -->
+        <li><a href="backend/position"><i class="fa fa-gear" aria-hidden="true"></i> <span>Vị trí quảng cáo</span></a></li>
         <li><a href="backend/banner"><i class="fa fa-gear" aria-hidden="true"></i> <span>Quản lý banner</span></a></li>
         <li><a href="{{ asset('backend/setting') }}"><i class="fa fa-gear" aria-hidden="true"></i> <span>Quản lý thiết lập</span></a></li>
         <!-- <li class="treeview">

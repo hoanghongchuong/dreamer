@@ -4,15 +4,18 @@
 <?php
 $setting = Cache::get('setting');
 $cateProducts = Cache::get('cateProducts');
-// dd($hot_news[1]->name);
-?>
 
+?>
+<div>
+    <input type="text" name="">
+</div>
 <h1 class="hidden">Dreamer - </h1>
 <section class="main_container">
 
     <section class="banner">
         <div class=" banner-slide">
-            <img src="{{asset('public/images/slider_1.jpg')}}" alt="" title="">
+            <?php $banner = DB::table('banner_content')->where('position',1)->first(); ?>
+            <img src="{{asset('upload/banner/'.$banner->image)}}" alt="" title="">
         </div>
     </section>
 
@@ -45,7 +48,7 @@ $cateProducts = Cache::get('cateProducts');
                                         <?php $cates = DB::table('product_categories')->get(); ?>
                                         @foreach($cates as $key => $cate)
                                         <li>
-                                            <i class="fa fa-home" aria-hidden="true"></i><a data-toggle="tab" class="@if($key ==0) active @endif"" href="#menu-{{$key}}">{{$cate->name}}</a>
+                                            <i class="fa fa-home" aria-hidden="true"></i><a data-toggle="tab" class="@if($key ==0) active @endif" href="#menu-{{$key}}">{{$cate->name}}</a>
                                         </li>
                                         @endforeach
 
@@ -63,42 +66,11 @@ $cateProducts = Cache::get('cateProducts');
                                     <li class="field_work_short_action"><span>Lĩnh vực hoạt động</span> <i
                                             class="fa fa-caret-down pull-right"></i></li>
                                     <ul class="field_work_short_content">
-
-                                        <li class="active">
-                                            <a data-toggle="tab" href="#menu-1">Tất cả</a>
+                                        @foreach($cates as $key => $cate)    
+                                        <li class="@if($key ==0) active @endif">
+                                            <a data-toggle="tab" href="#menu-{{$key}}">{{$cate->name}}</a>
                                         </li>
-
-                                        <li>
-                                            <a data-toggle="tab" href="#menu-2">Bất động sản</a>
-                                        </li>
-
-                                        <li>
-                                            <a data-toggle="tab" href="#menu-3">Du lịch - Khách sạn</a>
-                                        </li>
-
-                                        <li>
-                                            <a data-toggle="tab" href="#menu-4">Vui chơi - Giải trí</a>
-                                        </li>
-
-                                        <li>
-                                            <a data-toggle="tab" href="#menu-5">Y tế</a>
-                                        </li>
-
-                                        <li>
-                                            <a data-toggle="tab" href="#menu-6">Giáo dục</a>
-                                        </li>
-
-                                        <li>
-                                            <a data-toggle="tab" href="#menu-7">Thương mại điện tử</a>
-                                        </li>
-
-                                        <li>
-                                            <a data-toggle="tab" href="#menu-8">Trung tâm thương mại</a>
-                                        </li>
-
-                                        <li>
-                                            <a data-toggle="tab" href="#menu-9">Kinh doanh bán lẻ</a>
-                                        </li>
+                                        @endforeach
 
                                     </ul>
                                 </ul>
@@ -106,111 +78,6 @@ $cateProducts = Cache::get('cateProducts');
 
                             <div class="tab-content margin-top-30">
 
-                                <!-- <div id="menu-x" class="tab-pane fade in  active">
-                                    <div class="row">
-                                        <div class="owl-field-work owl-carousel" data-md-items='4' data-sm-items='2'
-                                             data-xs-items="1" data-margin='0'>
-                                            <div class="col-xs-12">
-
-                                                <div class="product-box field_work_short_tab_content ">
-
-                                                    <div class="product-thumbnail field_work_short_tab_content_img ">
-
-                                                        <a href="linh-vuc-chi-tiet.html"
-                                                           title="Khu đô thị sinh thái Vinhomes Riverside">
-                                                            <img src="{{asset('public/images/2-min.jpg')}}"
-                                                                 alt="Khu đô thị sinh thái Vinhomes Riverside">
-                                                        </a>
-                                                    </div>
-                                                    <div class="product-info field_work_short_tab_content_title">
-                                                        <p>Khu đô thị</p>
-                                                        <h3><a href="linh-vuc-chi-tiet.html" title="Khu đô thị sinh thái Vinhomes Riverside">Khu
-                                                            đô thị sinh thái Vinhomes Riverside</a></h3>
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                            <div class="col-xs-12">
-                                                <div class="product-box field_work_short_tab_content ">
-
-                                                    <div class="product-thumbnail field_work_short_tab_content_img ">
-                                                        <a href="linh-vuc-chi-tiet.html" title="Dự án Vinhomes Đồng Khởi">
-                                                            <img src="{{asset('public/images/8.jpg"')}} alt="Dự án Vinhomes Đồng Khởi">
-                                                        </a>
-                                                    </div>
-                                                    <div class="product-info field_work_short_tab_content_title">
-                                                        <p>Trung tâm thương mại</p>
-                                                        <h3><a href="linh-vuc-chi-tiet.html" title="Dự án Vinhomes Đồng Khởi">Dự án Vinhomes
-                                                            Đồng Khởi</a>
-                                                        </h3>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-xs-12">
-                                                <div class="product-box field_work_short_tab_content ">
-                                                    <div class="product-thumbnail field_work_short_tab_content_img ">
-                                                        <a href="linh-vuc-chi-tiet.html" title="Khu đô thị phức hợp Vinhomes Times City">
-                                                            <img src="{{asset('public/images/14.jpg?v=1496047191167')}}" alt="Khu đô thị phức hợp Vinhomes Times City">
-                                                        </a>
-                                                    </div>
-                                                    <div class="product-info field_work_short_tab_content_title">
-                                                        <p>Trung tâm thương mại</p>
-                                                        <h3><a href="linh-vuc-chi-tiet.html" title="Khu đô thị phức hợp Vinhomes Times City">Khu
-                                                            đô thị phức hợp Vinhomes Times City</a></h3>
-                                                    </div>
-
-
-                                                </div>
-                                            </div>
-
-                                            <div class="col-xs-12">
-
-
-                                                <div class="product-box field_work_short_tab_content ">
-
-                                                    <div class="product-thumbnail field_work_short_tab_content_img ">
-
-                                                        <a href="linh-vuc-chi-tiet.html" title="Khu đô thị phức hợp Vinhomes Royal City">
-                                                            <img src="{{asset('public/images/17-min.jpg?v=1496052812713')}}"
-                                                                 alt="Khu đô thị phức hợp Vinhomes Royal City">
-                                                        </a>
-                                                    </div>
-                                                    <div class="product-info field_work_short_tab_content_title">
-                                                        <p>Khu đô thị</p>
-                                                        <h3><a href="linh-vuc-chi-tiet.html" title="Khu đô thị phức hợp Vinhomes Royal City">Khu
-                                                            đô thị phức hợp Vinhomes Royal City</a></h3>
-
-
-                                                    </div>
-
-
-                                                </div>
-                                            </div>
-
-                                            <div class="col-xs-12">
-
-
-                                                <div class="product-box field_work_short_tab_content ">
-
-                                                    <div class="product-thumbnail field_work_short_tab_content_img ">
-
-                                                        <a href="linh-vuc-chi-tiet.html" title="Dự án Vinpearl Nha Trang Bay Resort & Villas">
-                                                            <img src="{{asset('public/images/5-min.jpg?v=1496052831840')}}"
-                                                                 alt="Dự án Vinpearl Nha Trang Bay Resort & Villas">
-                                                        </a>
-                                                    </div>
-                                                    <div class="product-info field_work_short_tab_content_title">
-                                                        <p>Khu nghỉ dưỡng</p>
-                                                        <h3><a href="linh-vuc-chi-tiet.html"
-                                                               title="Dự án Vinpearl Nha Trang Bay Resort & Villas">Dự
-                                                            án Vinpearl Nha Trang Bay Resort & Villas</a></h3>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div> -->
                                 @foreach($cates as $k => $cate)
                                 <div id="menu-{{$k}}" class="tab-pane fade in  @if($k ==0) active @endif">
                                     <div class="row">
@@ -453,28 +320,22 @@ $cateProducts = Cache::get('cateProducts');
                         <div class="bwt_title_main bwt_title_introduction">
                             <h2><a href="gioi-thieu.html">Giới thiệu</a></h2>
                         </div>
+
                         <div class="about_video_content">
                             <figure class="about_video_content_img">
                                 <a href="gioi-thieu.html">
                                     <picture>
-                                        <source media="(max-width: 480px)"
-                                                srcset="images/img1.jpg">
-                                        <source media="(min-width: 481px) and (max-width: 767px)"
-                                                srcset="images/img1.jpg">
-                                        <source media="(min-width: 768px) and (max-width: 1023px)"
-                                                srcset="images/img1.jpg">
-                                        <source media="(min-width: 1024px) and (max-width: 1199px)"
-                                                srcset="images/img1.jpg">
-                                        <source media="(min-width: 1200px)"
-                                                srcset="images/img1.jpg">
-                                        <img src="images/img1.jpg" alt="Dreamer" class="img-responsive">
+                                        <source media="(max-width: 480px)" srcset="{{asset('upload/hinhanh/'.$about->photo)}}">
+                                        <source media="(min-width: 481px) and (max-width: 767px)" srcset="{{asset('upload/hinhanh/'.$about->photo)}}">
+                                        <source media="(min-width: 768px) and (max-width: 1023px)" srcset="{{asset('upload/hinhanh/'.$about->photo)}}">
+                                        <source media="(min-width: 1024px) and (max-width: 1199px)" srcset="{{asset('upload/hinhanh/'.$about->photo)}}">
+                                        <source media="(min-width: 1200px)" srcset="{{asset('upload/hinhanh/'.$about->photo)}}">
+                                        <img src="{{asset('upload/hinhanh/'.$about->photo)}}" alt="Dreamer" class="img-responsive">
                                     </picture>
                                 </a>
                             </figure>
                             <div class="about_video_content_short">
-                                <p>Bằng khát vọng tiên phong cùng chiến lược đầu tư phát triển bền vững, lấy Bất động
-                                    sản và Du lịch làm lĩnh vực trọng tâm, VINGROUP phấn đấu trở thành Tập đoàn kinh tế
-                                    đa ngành hàng đầu Việt Nam và khu vực; hướng đến ....</p>
+                                <p>{!! $about->mota !!}</p>
                             </div>
                         </div>
                     </div>
@@ -487,17 +348,12 @@ $cateProducts = Cache::get('cateProducts');
 
                                 <a href="linh-vuc-chi-tiet.html">
                                     <picture>
-                                        <source media="(max-width: 480px)"
-                                                srcset="images/img2.jpg">
-                                        <source media="(min-width: 481px) and (max-width: 767px)"
-                                                srcset="images/img2.jpg">
-                                        <source media="(min-width: 768px) and (max-width: 1023px)"
-                                                srcset="images/img2.jpg">
-                                        <source media="(min-width: 1024px) and (max-width: 1199px)"
-                                                srcset="images/img2.jpg">
-                                        <source media="(min-width: 1200px)"
-                                                srcset="images/img2.jpg">
-                                        <img src="images/img2.jpg" alt="Dreamer" class="img-responsive">
+                                        <source media="(max-width: 480px)" srcset="{{asset('public/images/img2.jpg')}}">
+                                        <source media="(min-width: 481px) and (max-width: 767px)" srcset="{{asset('public/images/img2.jpg')}}">
+                                        <source media="(min-width: 768px) and (max-width: 1023px)" srcset="{{asset('public/images/img2.jpg')}}">
+                                        <source media="(min-width: 1024px) and (max-width: 1199px)" srcset="{{asset('public/images/img2.jpg')}}">
+                                        <source media="(min-width: 1200px)" srcset="{{asset('public/images/img2.jpg')}}">
+                                        <img src="{{asset('public/images/img2.jpg')}}" alt="Dreamer" class="img-responsive">
                                     </picture>
                                 </a>
                             </figure>
@@ -527,16 +383,16 @@ $cateProducts = Cache::get('cateProducts');
                                 </a>
                                 <picture>
                                     <source media="(max-width: 480px)"
-                                            srcset="images/img_about.png">
+                                            srcset="{{asset('public/images/img_about.png')}}">
                                     <source media="(min-width: 481px) and (max-width: 767px)"
-                                            srcset="images/img_about.png">
+                                            srcset="{{asset('public/images/img_about.png')}}">
                                     <source media="(min-width: 768px) and (max-width: 1023px)"
-                                            srcset="images/img_about.png">
+                                            srcset="{{asset('public/images/img_about.png')}}">
                                     <source media="(min-width: 1024px) and (max-width: 1199px)"
-                                            srcset="images/img_about.png">
+                                            srcset="{{asset('public/images/img_about.png')}}">
                                     <source media="(min-width: 1200px)"
-                                            srcset="images/img_about.png">
-                                    <img src="images/img_about.png" alt="Dreamer" class="img-responsive">
+                                            srcset="{{asset('public/images/img_about.png')}}">
+                                    <img src="{{asset('public/images/img_about.png')}}" alt="Dreamer" class="img-responsive">
                                 </picture>
 
                                 <h2><a class="fancybox_video fancybox.iframe"

@@ -20,6 +20,7 @@ Route::post('lien-he',['as'=>'postContact', 'uses'=>'ContactController@postConta
 
 Route::get('tin-tuc',['as'=>'getNews', 'uses'=>'IndexController@getNews']);
 Route::get('tin-tuc/{id}.html',['as'=>'getNewsDetail', 'uses'=>'IndexController@getNewsDetail']);
+Route::get('phat-trien.html',['as'=>'phatrien', 'uses'=>'IndexController@getPhatTrien']);
 Route::get('tuyen-dung',['as'=>'getNews', 'uses'=>'IndexController@getTuyenDung']);
 Route::get('tuyen-dung/{id}.html',['as'=>'getNewsDetail', 'uses'=>'IndexController@getNewsTuyenDungDetail']);
 

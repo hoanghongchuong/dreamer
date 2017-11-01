@@ -21,7 +21,7 @@ class NewsController extends Controller
         else if($_GET['type']=='huong-dan') $trang='hướng dẫn';
         else if($_GET['type']=='ve-chung-toi') $trang='về chúng tôi';
         else if($_GET['type']=='chinh-sach') $trang='chính sách';
-        else if($_GET['type']=='khong-gian') $trang='không gian';
+        else if($_GET['type']=='phat-trien') $trang='phát triển';
         else if($_GET['type']=='tuyen-dung') $trang='tuyển dụng';
         else $trang = "bài viết";
         $data = NewsCate::all();
@@ -40,7 +40,7 @@ class NewsController extends Controller
         else if($_GET['type']=='huong-dan') $trang='hướng dẫn';
         else if($_GET['type']=='ve-chung-toi') $trang='về chúng tôi';
         else if($_GET['type']=='chinh-sach') $trang='chính sách';
-        else if($_GET['type']=='khong-gian') $trang='không gian';
+        else if($_GET['type']=='phat-trien') $trang='phát triển';
         else if($_GET['type']=='tuyển dụng') $trang='tuyển dụng';
         else $trang = "bài viết";
 
@@ -127,7 +127,7 @@ class NewsController extends Controller
         else if($_GET['type']=='huong-dan') $trang='hướng dẫn';
         else if($_GET['type']=='ve-chung-toi') $trang='về chúng tôi';
         else if($_GET['type']=='chinh-sach') $trang='chính sách';
-        else if($_GET['type']=='khong-gian') $trang='không gian';
+        else if($_GET['type']=='phat-trien') $trang='phát triển';
         else if($_GET['type']=='mau-thiet-ke') $trang='mẫu thiết kế';
         else $trang = "bài viết";
 

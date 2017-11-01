@@ -1,57 +1,91 @@
 @extends('index')
 @section('content')
-<div class="wrap-breadcrumb">
-    <div class="clearfix container">
-        <div class="row main-header">                           
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pd5  ">
-                <ol class="breadcrumb breadcrumb-arrows">
-                    <li><a href="{{url('')}}" target="_self">Trang chủ</a></li>
-                    <li><a href="#" target="_self">Tìm kiếm</a></li>
-                    <!-- <li class="active"><span>Tất cả sản phẩm</span></li> -->
-                </ol>
-            </div>
-        </div>
-    </div>                          
-</div>
-<section id="content" class="clearfix container">  
-    <div class="row">
-      @foreach($products as $product)
-        <div class="col-md-4  col-sm-6 col-xs-12 pro-loop">
-            <div class="product-block product-resize">
-                <div class="product-img image-resize view view-third">
-                    <a href="{{url('san-pham/'.$product->alias.'.html')}}" title="Xe trượt HDL">
-                        <img class="first-image  has-img" alt=" {{$product->name}} " src="{{asset('upload/product/'.$product->photo)}}"  /> <?php @$image = DB::table('images')->where('product_id', $product->id)->orderBy('id','asc')->first();
-                          
-                         ?>     
-                        <img  class ="second-image" src="{{asset('upload/hasp/'.@$image->photo)}}"  alt="{{$product->name}}" />
-                    </a>
-                    <div class="actionss">
-                        <!-- <div class="btn-cart-products">
-                            <a href="javascript:void(0);" onclick="add_item_show_modalCart(1009814358)">
-                                <i class="fa fa-shopping-bag" aria-hidden="true"></i>
-                            </a>
-                        </div>
-                        <div class="view-details">
-                            <a href="{{url('san-pham/'.$product->alias.'.html')}}" class="view-detail" > 
-                                <span><i class="fa fa-clone"> </i></span>
-                            </a>
-                        </div>
-                        <div class="btn-quickview-products">
-                            <a href="javascript:void(0);" class="quickview" data-handle="detail.html"><i class="fa fa-eye"></i></a>
-                        </div> -->
-                    </div>
-                </div>
-                <div class="product-detail clearfix">
-                    <!-- sử dụng pull-left -->
-                    <h3 class="pro-name"><a href="{{url('san-pham/'.$product->alias.'.html')}}" title="{{$product->name}}">{{$product->name}} </a></h3>
-                    <div class="pro-prices">    
-                        <p class="pro-price">{{number_format($product->price)}} ₫</p>
-                        <p class="pro-price-del text-left"></p> 
-                    </div>
-                </div>
-            </div>  
-        </div> 
-        @endforeach   
+@extends('index')
+@section('content')
+<?php
+    $setting = Cache::get('setting');
+    $about = Cache::get('about');
+?>
+@extends('index')
+@section('content')
+<section class="bread-crumb">
+    <div class="container">
+
+        <ul class="breadcrumb">
+            <li class="home">
+                <a itemprop="url" href="{{url('')}}" ><span itemprop="title">Trang chủ</span></a>
+                <span><i class="fa fa-angle-right"></i></span>
+            </li>
+            
+            <li><strong><span itemprop="title"> Kết quả tìm kiếm</span></strong></li>
+        </ul>
+
     </div>
 </section>
+
+<div class="container">
+    <div class="row">
+        <section class="main_container collection col-lg-12 ">
+            <h1 class="title-head margin-top-20" style="font-size:27px;color:#575454;">Lĩnh vực hoạt động</h1>
+            <div class="category-products products">
+
+                <script>
+                    $(function(){
+
+                        $(".filter-vendor .sortby-2 li").click(function(){
+                            var text = $('.filter-vendor .sortby-2 li.active a').text();
+                            $(".droplist .select-name").text(text);
+                        });
+
+                        if ($(".filter-vendor .sortby-2 li").hasClass('active')) {
+                            var text = $('.filter-vendor .sortby-2 li.active a').text();
+                            $(".droplist .select-name").text(text);
+                        } else {
+                            $(".droplist .select-name").text('Nhà sản xuất');
+                        }
+                        $(".filter-type .sortby-1 li").click(function(){
+                            var text = $('.filter-type .sortby-1 li.active a').text();
+                            $(".droplist1 .select-name1").text(text);
+                        });
+                        if ($(".filter-type .sortby-1 li").hasClass('active')) {
+                            var text = $('.filter-type .sortby-1 li.active a').text();
+                            $(".droplist1 .select-name1").text(text);
+
+                        } else {
+                            $(".droplist1 .select-name1").text('Loại sản phẩm');
+                        }
+                    });
+                </script>
+                <section class="products-view products-view-grid">
+                    <div class="row">
+                        @foreach($products as $item)
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 product-gird-cl">
+                            <div class="product-box field_work_short_tab_content ">
+                                <div class="product-thumbnail field_work_short_tab_content_img ">
+                                    <a href="{{url('linh-vuc/'.$item->alias.'.html')}}" title="{{$item->name}}">
+                                        <img src="{{asset('upload/product/'.$item->photo)}}" alt="{{$item->name}}">
+                                    </a>
+                                </div>
+                                <div class="product-info field_work_short_tab_content_title">
+                                    
+                                    <h3><a href="{{url('linh-vuc/'.$item->alias.'.html')}}" title="{{$item->name}}">{{$item->name}}</a></h3>
+                                </div>
+                            </div>
+                        </div>
+                        @endforeach
+                    </div>
+                    <div class="text-right">
+                        
+                        <div class="">{!! $products->links() !!}</div>
+                    </div>
+                </section>
+            </div>
+        </section>
+    </div>
+</div>
+
+@endsection
+
+@endsection
+
 @endsection

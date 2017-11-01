@@ -25,7 +25,7 @@
             <h1 class="title-head margin-top-20" style="font-size:27px;color:#575454;">Lĩnh vực hoạt động</h1>
             <div class="category-products products">
 
-                <div class="sortPagiBar">
+                <!-- <div class="sortPagiBar">
                     <div class="collection-filter-panel">
                         <div class="filter-type btn-group">
                             <button class="btn btn-2 dropdown-toggle button-1 droplist1" data-toggle="dropdown">
@@ -55,7 +55,7 @@
                             </ul>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <script>
                     $(function(){
 

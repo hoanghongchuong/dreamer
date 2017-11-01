@@ -31,7 +31,8 @@
 
                                 <div class="row">
                                     <div class="col-xs-12">
-                                        {!!$about->content!!}
+
+                                        {!!$pt->content!!}
                                     </div>
                                     <div class="col-xs-12">
                                         <div id="field_work_nav_list_action" class="field_work_nav_list hidden-xs">
